@@ -1,6 +1,6 @@
 # Angular Codeigniter Blog
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2. This is a simple blog project in Angular 8 and Codeigniter Framework.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2. This is a simple blog project in Angular 8 and Codeigniter 3.x Framework.
 
 ## Core Features
 - Project Overview and Setup

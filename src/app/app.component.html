@@ -1,7 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
-<app-banner></app-banner>
-<app-blogpost-featured></app-blogpost-featured>
-<app-footer></app-footer>
-
+<app-banner *ngIf="route.url == '/'"></app-banner>
+<app-blogpost-featured *ngIf="route.url == '/'"></app-blogpost-featured>
 <router-outlet></router-outlet>
+<app-footer></app-footer>

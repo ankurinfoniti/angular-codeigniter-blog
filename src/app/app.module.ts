@@ -20,9 +20,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CmspageModule,
-    BlogpostModule
+    BlogpostModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
