@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-blue">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">
+    <a class="navbar-brand" routerLink="/" (click)="setPageTitle('Blogger')">
       <img src="assets/images/logo.png" alt="Angular Project" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -9,17 +9,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" >Home</a>
+        <li class="nav-item active">
+          <a routerLink="/" routerLinkActive="active" class="nav-link" (click)="setPageTitle('Blogger')">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/page/about" routerLinkActive="active" >About</a>
+          <a routerLink="/page/about" routerLinkActive="active" class="nav-link"
+            (click)="setPageTitle('About')">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active" >Contact</a>
+          <a routerLink="/page/services" routerLinkActive="active" class="nav-link"
+            (click)="setPageTitle('Services')">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/blog" routerLinkActive="active" >Blog</a>
+          <a routerLink="/contact" routerLinkActive="active" class="nav-link"
+            (click)="setPageTitle('Contact')">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/blog" routerLinkActive="active" class="nav-link">Blog</a>
         </li>
       </ul>
     </div>
