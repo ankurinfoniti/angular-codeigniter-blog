@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Page } from './page';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Contact } from './contact';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -12,6 +13,10 @@ export class CmspageService {
   serverUrl = 'http://localhost/ci-php-webapi/index.php/';
   errorData: {};
 
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
+
   constructor(private http: HttpClient) { }
 
   getPage(slug: string) {
@@ -19,6 +24,12 @@ export class CmspageService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  contactForm(formdata: Contact) {
+    return this.http.post<Contact>(this.serverUrl + 'api/contact/', formdata, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

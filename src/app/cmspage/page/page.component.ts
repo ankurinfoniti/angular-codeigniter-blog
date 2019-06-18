@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CmspageService } from '../cmspage.service';
 import { Page } from '../page';
@@ -16,10 +17,13 @@ export class PageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private cmspageService: CmspageService
+    private cmspageService: CmspageService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
+    this.titleService.setTitle(this.route.snapshot.params.slug.charAt(0).toUpperCase() + 
+      this.route.snapshot.params.slug.slice(1));
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.cmspageService.getPage(params.get('slug'))
