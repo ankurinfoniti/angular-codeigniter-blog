@@ -1,38 +1,44 @@
 import { Injectable } from '@angular/core';
-import { Page } from './page';
-import { Contact } from './contact';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpBackend } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CmspageService {
-
+export class AuthService {
   serverUrl = 'http://localhost/ci-php-webapi/index.php/';
   errorData: {};
-  private http: HttpClient;
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  constructor(private http: HttpClient) { }
 
-  constructor(handler: HttpBackend) {
-    this.http = new HttpClient(handler);
-  }
+  redirectUrl: string;
 
-  getPage(slug: string) {
-    return this.http.get<Page>(this.serverUrl + 'api/page/' + slug)
-      .pipe(
+  login(username: string, password: string) {
+    return this.http.post<any>(`${this.serverUrl}api/login`, { username: username, password: password })
+      .pipe(map(user => {
+        if (user && user.token) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+      }),
         catchError(this.handleError)
       );
   }
 
-  contactForm(formdata: Contact) {
-    return this.http.post<Contact>(this.serverUrl + 'api/contact/', formdata, this.httpOptions).pipe(
-      catchError(this.handleError)
-    );
+  isLoggedIn() {
+    if (localStorage.getItem('currentUser')) {
+      return true;
+    }
+    return false;
+  }
+
+  getAuthorizationToken() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser.token;
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
   }
 
   private handleError(error: HttpErrorResponse) {

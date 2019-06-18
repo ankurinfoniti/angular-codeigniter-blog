@@ -22,8 +22,9 @@ export class PageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle(this.route.snapshot.params.slug.charAt(0).toUpperCase() + 
-      this.route.snapshot.params.slug.slice(1));
+    const title = this.route.snapshot.params.slug.charAt(0).toUpperCase() +
+      this.route.snapshot.params.slug.slice(1);
+    this.titleService.setTitle(title);
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.cmspageService.getPage(params.get('slug'))
