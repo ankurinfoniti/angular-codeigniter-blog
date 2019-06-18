@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.authService.login(this.username.value, this.password.value).subscribe((data) => {
-      if (this.authService.isLoggedIn) {
+      if (this.authService.isLoggedIn()) {
         const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
         this.router.navigate([redirect]);
       } else {
