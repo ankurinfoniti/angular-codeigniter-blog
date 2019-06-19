@@ -4,13 +4,14 @@ import { Contact } from './contact';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpBackend } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CmspageService {
 
-  serverUrl = 'http://localhost/ci-php-webapi/index.php/';
+  serverUrl = environment.baseUrl;
   errorData: {};
   private http: HttpClient;
 
