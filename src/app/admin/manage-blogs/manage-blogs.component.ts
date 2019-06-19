@@ -21,4 +21,16 @@ export class ManageBlogsComponent implements OnInit {
     );
   }
 
+  onDelete(id: number) {
+    if (confirm('Are you sure want to delete it = ' + id)) {
+      this.blogService.deleteBlog(+id).subscribe(
+        res => {
+          console.log(res);
+          this.ngOnInit();
+        },
+        error => this.error = error
+      );
+    }
+  }
+
 }

@@ -3,7 +3,7 @@
     <h1>{{title}}</h1>
   </div>
   <div class="dash-nav">
-    <a href="#" class="btn btn-success">Add Post</a>
+    <a [routerLink]="['/admin/blogs/create']" class="btn btn-success">Add Post</a>
   </div>
 </div>
 <table class="table table-bordered table-striped">
@@ -20,9 +20,9 @@
     <td>{{blog.title}}</td>
     <td>{{blog.created_at | date: 'mediumDate'}}</td>
     <td class="action">
-      <a href="#" class="btn btn-info btn-sm">Edit</a>
+      <a [routerLink]="['/admin/blogs/edit', blog.id]" class="btn btn-info btn-sm">Edit</a>
       &nbsp;
-      <a href="#" class="btn btn-danger btn-sm">Delete</a>
+      <a (click)="onDelete(blog.id)" class="btn btn-danger btn-sm">Delete</a>
     </td>
   </tr>
 </table>

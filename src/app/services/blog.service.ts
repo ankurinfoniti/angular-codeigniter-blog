@@ -18,6 +18,30 @@ export class BlogService {
     );
   }
 
+  getBlog(id: number) {
+    return this.http.get<Blog>(this.serverUrl + 'api/adminBlog/' + id).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  createBlog(blog) {
+    return this.http.post<any>(this.serverUrl + 'api/createBlog', blog).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateBlog(blog, id: number) {
+    return this.http.post<any>(this.serverUrl + 'api/updateBlog/' + id, blog).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteBlog(id: number) {
+    return this.http.delete(this.serverUrl + 'api/deleteBlog/' + id).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
