@@ -1,0 +1,15 @@
+.image-container {
+	border: 2px solid #ccc;
+	overflow: visible;
+	position: relative;
+	display: inline-block;
+}
+
+.imgcancel {
+    position: absolute;
+    background: #999;
+    color: white;
+    top: 0px;
+    right: 0px;
+    border-radius: 50%;
+}

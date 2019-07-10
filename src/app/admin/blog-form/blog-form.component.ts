@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-blog-form',
@@ -9,6 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./blog-form.component.css']
 })
 export class BlogFormComponent implements OnInit {
+  @ViewChild('myInput')
+  myInputVariable: ElementRef;
 
   pageTitle: string;
   error: string;
@@ -66,6 +69,13 @@ export class BlogFormComponent implements OnInit {
       }
 
     }
+  }
+
+  removeImageFile() {
+    this.imagePath = '';
+    console.log(this.myInputVariable.nativeElement.files);
+    this.myInputVariable.nativeElement.value = "";
+    console.log(this.myInputVariable.nativeElement.files);
   }
 
   get title() {

@@ -33,11 +33,16 @@
     <div class="form-group form-row">
       <label class="col-md-3">Upload Image</label>
       <div class="col-md-9">
-        <input type="file" id="image" (change)="onSelectedFile($event)" />
+        <input #myInput type="file" id="image" (change)="onSelectedFile($event)" />
         <div [innerHTML]="uploadError" class="error"></div>
         <div *ngIf="imagePath">
           <br />
-          <img [src]="imagePath" width="100px">
+          <span class="image-container">
+            <img [src]="imagePath" width="100px">
+            <button type="button" class="imgcancel" (click)="removeImageFile($event)">
+                X
+            </button>
+          </span>
         </div>
       </div>
     </div>
