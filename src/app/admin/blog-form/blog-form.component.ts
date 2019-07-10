@@ -13,7 +13,7 @@ export class BlogFormComponent implements OnInit {
   pageTitle: string;
   error: string;
   uploadError: string;
-  imagePath: string;
+  imagePath: any;
 
   blogForm: FormGroup;
 
@@ -58,6 +58,13 @@ export class BlogFormComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.blogForm.get('image').setValue(file);
+
+      let reader = new FileReader();
+      reader.readAsDataURL(file); 
+      reader.onload = (_event) => {
+        this.imagePath = reader.result; 
+      }
+
     }
   }
 
