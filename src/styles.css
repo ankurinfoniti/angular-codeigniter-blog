@@ -269,3 +269,8 @@ footer {
 .contact-message {
     text-align: center;
 }
+
+a.nav-link.active {
+    background-color: #0058a8;
+    border-radius: 5px;
+}

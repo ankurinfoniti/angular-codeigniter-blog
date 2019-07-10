@@ -14,7 +14,8 @@ import { CategoriesComponent } from './categories/categories.component';
     BlogpostListComponent,
     BlogpostDetailComponent,
     BlogpostRecentComponent,
-    CategoriesComponent],
+    CategoriesComponent
+  ],
   exports: [
     BlogpostFeaturedComponent
   ],
